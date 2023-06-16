@@ -5,6 +5,26 @@ app = Flask(__name__)
 lm = LoginManager()
 lm.init_app(app)
 
+
+class User:
+    auth = False
+    activity = True
+    anon = False
+    id = "root"
+
+    def is_authenticated(self):
+        return self.auth
+
+    def is_active(self):
+        return self.activity
+
+    def is_anonymous(self):
+        return self.anon
+
+    def get_id(self):
+        return self.id
+
+
 @app.route('/import')
 def import_page():
     return render_template("import.html")
