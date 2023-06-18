@@ -5,6 +5,20 @@
     <title>import</title>
 </head>
 <body>
-<input type="file" accept="text/csv">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="post" action="/import" enctype=multipart/form-data>
+    <div>
+        <input type="file" name="file" accept="text/csv">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
 </body>
 </html>

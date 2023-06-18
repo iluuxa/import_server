@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='search_script.js') }}"></script>
+</head>
+<body>
+<table id="main_table">
+    <thead>
+        <tr>
+            {%set row = content[0]%}
+            {% for cell in row %}
+            <td>
+                <button onclick="sortControl({{loop.index-1}})">{{ cell }}</button>
+            <input type="text" onkeyup="searchColumn()" id="filter_input_{{loop.index-1}}">
+            </td>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in content[1:] %}
+        <tr>
+            {% for cell in row %}
+            <td>
+                {{ cell }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script type="text/javascript" src="{{ url_for('static', filename='sort_script.js') }}"></script>
+</body>
+</html>

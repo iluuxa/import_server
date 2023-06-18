@@ -5,6 +5,13 @@
     <title>Login</title>
 </head>
 <body>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
 <form action="/login" method="post">
     <div>
         <span>Username:</span>
@@ -18,5 +25,8 @@
         <input type="submit">
     </div>
 </form>
+<div>
+    <a href="/register">Sign up</a>
+</div>
 </body>
 </html>
