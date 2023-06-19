@@ -112,9 +112,7 @@ function getContent(row,column){
 }
 
 function recSort(arr,column,orderIndex,asc){
-    if(orderIndex>=ORDER.length){
-        return arr;
-    }
+
     /*
     console.log("recSort:\n")
     console.log(arr)
@@ -135,6 +133,9 @@ function recSort(arr,column,orderIndex,asc){
     else{
         arr=quickSort(arr,column,asc);
     }
+    if(orderIndex+1>=ORDER.length){
+        return arr;
+    }
     var i,j,eqArr;
     for(i = 0;i<arr.length-1;i++){
         eqArr=[];
@@ -143,11 +144,11 @@ function recSort(arr,column,orderIndex,asc){
             for (j = 0; (i+j+1<arr.length)&&(getContent(arr[i],column)===(getContent(arr[i+j+1],column)));j++){
                 eqArr.push(arr[i+j+1])
             }
-            console.log(eqArr);
+            //console.log(eqArr);
             eqArr=recSort(eqArr,ORDER[orderIndex+1],orderIndex+1,(COLUMN_MODE[ORDER[orderIndex+1]]==1))
-            console.log(eqArr);
-            console.log(ORDER);
-            console.log(orderIndex);
+            //console.log(eqArr);
+            //console.log(ORDER);
+            //console.log(orderIndex);
             for (j = 0; j<eqArr.length;j++){
                 arr[i+j]=eqArr[j];
             }

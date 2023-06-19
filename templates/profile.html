@@ -8,11 +8,23 @@
 <ul>
     {% for file in files %}
     <li>
-        <form action="/view" method="post">
-            <input type="submit" name="Open" value = {{file}}>
-        </form>
+        <span>
+            <form action="/view" method="post" style="display:inline">
+                <input name="Open" value="{{file}}" style="display: none">
+                <input type="submit" name="Open button" value="Open {{file}}" title="{{file}}">
+            </form>
+            <form action="/delete" method="post" style="display:inline">
+                <input name="Delete" value="{{file}}" style="display: none">
+                <input type="submit" name="Delete button" value="Delete {{file}}" title="{{file}}">
+            </form>
+            <span>
+                {{preview[loop.index-1]}}
+            </span>
+        </span>
     </li>
     {% endfor %}
 </ul>
+<a href="/import">Import file</a>
+<a href="/logout">Log out</a>
 </body>
 </html>
